@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .options button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .result {
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+      color: green;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Simple Quiz</h1>
+    <div class="question" id="question">Loading question...</div>
+    <div class="options" id="options"></div>
+    <div class="result" id="result"></div>
+    <div class="score" id="score"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["London", "Paris", "Berlin", "Madrid"],
+        answer: "Paris"
+      },
+      {
+        question: "Which language is used to style websites?",
+        options: ["HTML", "Python", "CSS", "C++"],
+        answer: "CSS"
+      },
+      {
+        question: "What is 5 + 3?",
+        options: ["6", "7", "8", "9"],
+        answer: "8"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      document.getElementById("result").innerText = "";
+      const q = quizData[currentQuestion];
+      document.getElementById("question").innerText = q.question;
+
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.onclick = () => checkAnswer(option);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const correct = quizData[currentQuestion].answer;
+      if (selected === correct) {
+        document.getElementById("result").innerText = "✅ Correct!";
+        score++;
+      } else {
+        document.getElementById("result").innerText = "❌ Wrong! Correct answer: " + correct;
+      }
+
+      currentQuestion++;
+      setTimeout(() => {
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          showScore();
+        }
+      }, 1000);
+    }
+
+    function showScore() {
+      document.getElementById("question").innerText = "Quiz Completed!";
+      document.getElementById("options").innerHTML = "";
+      document.getElementById("score").innerText = "Your Score: " + score + " / " + quizData.length;
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
