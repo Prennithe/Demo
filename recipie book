@@ -146,3 +146,33 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Book</title>
+</head>
+<body>
+  <h2>Pancakes</h2>
+  <p>Ingredients: Flour, Milk, Eggs, Sugar</p>
+  <button onclick="showSteps('pancakeSteps')">Show Pancake Steps</button>
+  <p id="pancakeSteps"></p>
+
+  <h2>Omelette</h2>
+  <p>Ingredients: Eggs, Onion, Tomato, Salt</p>
+  <button onclick="showSteps('omeletteSteps')">Show Omelette Steps</button>
+  <p id="omeletteSteps"></p>
+
+  <script>
+    function showSteps(id) {
+      if (id === 'pancakeSteps') {
+        document.getElementById(id).innerText =
+          "1. Mix flour, milk, eggs, and sugar.\n2. Heat a pan.\n3. Pour the batter and cook both sides.";
+      } else if (id === 'omeletteSteps') {
+        document.getElementById(id).innerText =
+          "1. Beat eggs with salt.\n2. Add chopped onion and tomato.\n3. Cook on a hot pan.";
+      }
+    }
+  </script>
+</body>
+</html>
+-->
