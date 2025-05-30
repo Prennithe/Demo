@@ -158,3 +158,46 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Manager</title>
+</head>
+<body>
+  <h2>Contacts</h2>
+  <label for="name">Name:</label>
+  <input id="name" placeholder="Name" required>
+  <input id="phone" placeholder="Phone" required>
+  <input id="email" placeholder="Email">
+  <button onclick="add()">Add</button>
+
+  <ul id="contacts"></ul>
+
+  <script>
+    function add() {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      // Validate required fields
+      if (name === "" || phone === "") {
+        alert("Name and Phone are required.");
+        return;
+      }
+
+      const li = document.createElement("li");
+
+      // Add new lines using <br>
+      li.innerHTML = `Name: ${name}<br>Phone: ${phone}<br>Email: ${email}`;
+
+      document.getElementById("contacts").appendChild(li);
+
+      // Clear inputs
+      document.getElementById("name").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("email").value = "";
+    }
+  </script>
+</body>
+</html>
+-->
