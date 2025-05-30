@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .controls input,
+    .controls button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .controls input {
+      flex-grow: 1;
+      min-width: 200px;
+    }
+
+    .controls button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .image-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .image-title {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      text-align: center;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📸 Responsive Image Gallery</h1>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search images..." oninput="filterImages()">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('nature')">Nature</button>
+    <button onclick="filterCategory('animals')">Animals</button>
+    <button onclick="filterCategory('cities')">Cities</button>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <!-- Sample Images -->
+    <div class="image-card" data-category="nature">
+      <img src="https://source.unsplash.com/400x300/?nature,forest" alt="Forest">
+      <div class="image-title">Forest</div>
+    </div>
+    <div class="image-card" data-category="animals">
+      <img src="https://source.unsplash.com/400x300/?lion" alt="Lion">
+      <div class="image-title">Lion</div>
+    </div>
+    <div class="image-card" data-category="cities">
+      <img src="https://source.unsplash.com/400x300/?city,night" alt="City at Night">
+      <div class="image-title">City at Night</div>
+    </div>
+    <div class="image-card" data-category="nature">
+      <img src="https://source.unsplash.com/400x300/?mountain" alt="Mountain">
+      <div class="image-title">Mountain</div>
+    </div>
+    <div class="image-card" data-category="animals">
+      <img src="https://source.unsplash.com/400x300/?elephant" alt="Elephant">
+      <div class="image-title">Elephant</div>
+    </div>
+    <div class="image-card" data-category="cities">
+      <img src="https://source.unsplash.com/400x300/?building" alt="Skyscraper">
+      <div class="image-title">Skyscraper</div>
+    </div>
+  </div>
+
+  <script>
+    function filterCategory(category) {
+      const cards = document.querySelectorAll('.image-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function filterImages() {
+      const searchValue = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.image-card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.image-title').innerText.toLowerCase();
+        const alt = card.querySelector('img').alt.toLowerCase();
+        if (title.includes(searchValue) || alt.includes(searchValue)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
