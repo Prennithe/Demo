@@ -153,3 +153,40 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+</head>
+<body>
+  <h2>Simple Calculator</h2>
+  <input id="a" type="number" placeholder="Enter first number">
+  <input id="b" type="number" placeholder="Enter second number"><br><br>
+
+  <button onclick="calc('+')">Add</button>
+  <button onclick="calc('-')">Subtract</button>
+  <button onclick="calc('*')">Multiply</button>
+  <button onclick="calc('/')">Divide</button>
+
+  <p id="res"></p>
+
+  <script>
+    function calc(op) {
+      const a = +document.getElementById("a").value;
+      const b = +document.getElementById("b").value;
+      let result;
+
+      if (op === '+') result = a + b;
+      else if (op === '-') result = a - b;
+      else if (op === '*') result = a * b;
+      else if (op === '/') {
+        if (b === 0) result = "Cannot divide by zero";
+        else result = a / b;
+      }
+
+      document.getElementById("res").innerText = "Result: " + result;
+    }
+  </script>
+</body>
+</html>
+-->
