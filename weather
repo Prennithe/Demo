@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #weatherResult {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+      min-width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌤 Weather Forecast</h1>
+  <input type="text" id="cityInput" placeholder="Enter city name">
+  <button onclick="getWeather()">Get Weather</button>
+
+  <div id="weatherResult"></div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById("cityInput").value;
+      const apiKey = "YOUR_API_KEY"; // Replace with your OpenWeatherMap API key
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.cod === 200) {
+          const resultDiv = document.getElementById("weatherResult");
+          resultDiv.innerHTML = `
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <p>🌡 Temperature: ${data.main.temp}°C</p>
+            <p>☁ Weather: ${data.weather[0].main} - ${data.weather[0].description}</p>
+            <p>💨 Wind Speed: ${data.wind.speed} m/s</p>
+          `;
+        } else {
+          document.getElementById("weatherResult").innerHTML = `<p>❌ City not found.</p>`;
+        }
+      } catch (error) {
+        document.getElementById("weatherResult").innerHTML = `<p>⚠ Error fetching data.</p>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
