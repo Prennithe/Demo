@@ -136,3 +136,27 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+</head>
+<body>
+  <h2>My Music</h2>
+
+  <audio id="myAudio">
+    <source src="song.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button onclick="playMusic()">Play Music</button>
+
+  <script>
+    function playMusic() {
+      const audio = document.getElementById("myAudio");
+      audio.play();
+    }
+  </script>
+</body>
+</html>
+-->
