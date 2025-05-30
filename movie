@@ -110,3 +110,23 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Search</title>
+</head>
+<body>
+  <h2>Search a Movie</h2>
+  <input id="movieInput" placeholder="Search movie">
+  <button onclick="searchMovie()">Search</button>
+  <p id="output">Try typing "Avengers".</p>
+
+  <script>
+    function searchMovie() {
+      const movie = document.getElementById("movieInput").value;
+      document.getElementById("output").innerText = "You searched for: " + movie;
+    }
+  </script>
+</body>
+</html>
+-->
