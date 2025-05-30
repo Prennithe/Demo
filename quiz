@@ -138,3 +138,41 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+</head>
+<body>
+  <h1>Question 1: What is 2 + 2?</h1>
+  <button onclick="checkAnswer(1, 3)">3</button>
+  <button onclick="checkAnswer(1, 4)">4</button>
+  <button onclick="checkAnswer(1, 5)">5</button>
+  <p id="result1"></p>
+
+  <h1>Question 2: What is the capital of France?</h1>
+  <button onclick="checkAnswer(2, 'London')">London</button>
+  <button onclick="checkAnswer(2, 'Paris')">Paris</button>
+  <button onclick="checkAnswer(2, 'Berlin')">Berlin</button>
+  <p id="result2"></p>
+
+  <script>
+    function checkAnswer(qNum, ans) {
+      if (qNum === 1) {
+        if (ans === 4) {
+          document.getElementById("result1").innerText = "Correct!";
+        } else {
+          document.getElementById("result1").innerText = "Wrong!";
+        }
+      } else if (qNum === 2) {
+        if (ans === "Paris") {
+          document.getElementById("result2").innerText = "Correct!";
+        } else {
+          document.getElementById("result2").innerText = "Wrong!";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+-->
