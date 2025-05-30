@@ -153,27 +153,3 @@
 
 </body>
 </html>
-<!--<!DOCTYPE html>
-<html>
-<head>
-  <title>Quiz</title>
-</head>
-<body>
-  <h1>What is 2 + 2?</h1>
-  <button onclick="checkAnswer(3)">3</button>
-  <button onclick="checkAnswer(4)">4</button>
-  <button onclick="checkAnswer(5)">5</button>
-  <p id="result"></p>
-
-  <script>
-    function checkAnswer(ans) {
-      if (ans === 4) {
-        document.getElementById("result").innerText = "Correct!";
-      } else {
-        document.getElementById("result").innerText = "Wrong!";
-      }
-    }
-  </script>
-</body>
-</html>
--->
