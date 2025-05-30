@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Travel Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .destinations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    form h2 {
+      text-align: center;
+      color: #0077b6;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005f87;
+    }
+
+    #confirmation {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Explore The World</h1>
+    <p>Book your next adventure with us!</p>
+  </header>
+
+  <section class="destinations">
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?paris" alt="Paris">
+      <div class="card-content">
+        <h3>Paris, France</h3>
+        <p>Explore the city of lights with its rich culture and cuisine.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?bali" alt="Bali">
+      <div class="card-content">
+        <h3>Bali, Indonesia</h3>
+        <p>Relax on the tropical beaches and enjoy scenic views.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?newyork" alt="New York">
+      <div class="card-content">
+        <h3>New York, USA</h3>
+        <p>Experience the vibrant city life and iconic landmarks.</p>
+      </div>
+    </div>
+  </section>
+
+  <form id="bookingForm">
+    <h2>Book Your Trip</h2>
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" required>
+
+    <label for="destination">Select Destination</label>
+    <select id="destination" required>
+      <option value="">--Choose--</option>
+      <option>Paris</option>
+      <option>Bali</option>
+      <option>New York</option>
+    </select>
+
+    <label for="date">Travel Date</label>
+    <input type="date" id="date" required>
+
+    <button type="submit">Book Now</button>
+    <div id="confirmation"></div>
+  </form>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const destination = document.getElementById("destination").value;
+      const date = document.getElementById("date").value;
+
+      document.getElementById("confirmation").innerText =
+        `✅ Thank you, ${name}! Your trip to ${destination} on ${date} has been booked.`;
+      
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
