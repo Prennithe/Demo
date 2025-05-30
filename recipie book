@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      margin-bottom: 20px;
+    }
+
+    .buttons button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background: #0056b3;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      text-align: left;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍴 Recipe Collection</h1>
+  <div class="buttons">
+    <button onclick="filterRecipes('All')">All</button>
+    <button onclick="filterRecipes('Breakfast')">Breakfast</button>
+    <button onclick="filterRecipes('Lunch')">Lunch</button>
+    <button onclick="filterRecipes('Dessert')">Dessert</button>
+  </div>
+
+  <div class="grid" id="recipeGrid"></div>
+
+  <script>
+    const recipes = [
+      {
+        title: "Pancakes",
+        category: "Breakfast",
+        image: "https://via.placeholder.com/250x150.png?text=Pancakes",
+        description: "Fluffy pancakes with maple syrup."
+      },
+      {
+        title: "Grilled Cheese Sandwich",
+        category: "Lunch",
+        image: "https://via.placeholder.com/250x150.png?text=Grilled+Cheese",
+        description: "Crispy grilled cheese with tomato soup."
+      },
+      {
+        title: "Chocolate Cake",
+        category: "Dessert",
+        image: "https://via.placeholder.com/250x150.png?text=Chocolate+Cake",
+        description: "Rich chocolate cake with ganache."
+      },
+      {
+        title: "Omelette",
+        category: "Breakfast",
+        image: "https://via.placeholder.com/250x150.png?text=Omelette",
+        description: "Protein-packed vegetable omelette."
+      },
+      {
+        title: "Chicken Biryani",
+        category: "Lunch",
+        image: "https://via.placeholder.com/250x150.png?text=Biryani",
+        description: "Spicy and flavorful biryani."
+      },
+      {
+        title: "Ice Cream Sundae",
+        category: "Dessert",
+        image: "https://via.placeholder.com/250x150.png?text=Ice+Cream",
+        description: "Vanilla ice cream with toppings."
+      }
+    ];
+
+    function displayRecipes(list) {
+      const grid = document.getElementById("recipeGrid");
+      grid.innerHTML = "";
+      list.forEach(recipe => {
+        grid.innerHTML += `
+          <div class="card">
+            <img src="${recipe.image}" alt="${recipe.title}">
+            <h3>${recipe.title}</h3>
+            <p>${recipe.description}</p>
+            <small><strong>Category:</strong> ${recipe.category}</small>
+          </div>
+        `;
+      });
+    }
+
+    function filterRecipes(category) {
+      if (category === "All") {
+        displayRecipes(recipes);
+      } else {
+        const filtered = recipes.filter(r => r.category === category);
+        displayRecipes(filtered);
+      }
+    }
+
+    // Initial display
+    displayRecipes(recipes);
+  </script>
+
+</body>
+</html>
