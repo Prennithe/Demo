@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Search App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #00b894;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #019875;
+    }
+
+    .movie {
+      margin-top: 30px;
+      padding: 20px;
+      background: #2c2c2c;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .movie img {
+      max-width: 200px;
+      border-radius: 10px;
+    }
+
+    .details {
+      text-align: left;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 Movie Search</h1>
+  <input type="text" id="movieInput" placeholder="Enter movie title...">
+  <button onclick="searchMovie()">Search</button>
+
+  <div class="movie" id="movieResult"></div>
+
+  <script>
+    async function searchMovie() {
+      const movie = document.getElementById("movieInput").value.trim();
+      const resultDiv = document.getElementById("movieResult");
+      if (movie === "") {
+        resultDiv.innerHTML = "<p>Please enter a movie title.</p>";
+        return;
+      }
+
+      resultDiv.innerHTML = "<p>Loading...</p>";
+
+      const apiKey = "YOUR_API_KEY"; // Replace with your OMDb API key
+      const url = `https://www.omdbapi.com/?t=${encodeURIComponent(movie)}&apikey=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.Response === "False") {
+          resultDiv.innerHTML = `<p>❌ Movie not found.</p>`;
+        } else {
+          resultDiv.innerHTML = `
+            <img src="${data.Poster !== "N/A" ? data.Poster : ""}" alt="Poster">
+            <div class="details">
+              <h2>${data.Title} (${data.Year})</h2>
+              <p><strong>Genre:</strong> ${data.Genre}</p>
+              <p><strong>Plot:</strong> ${data.Plot}</p>
+              <p><strong>Actors:</strong> ${data.Actors}</p>
+              <p><strong>IMDB Rating:</strong> ⭐ ${data.imdbRating}</p>
+            </div>
+          `;
+        }
+      } catch (err) {
+        resultDiv.innerHTML = "<p>Something went wrong. Please try again later.</p>";
+        console.error(err);
+      }
+    }
+  </script>
+
+</body>
+</html>
