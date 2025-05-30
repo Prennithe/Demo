@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .post {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px #ccc;
+    }
+
+    .post h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .post p {
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      input[type="text"] {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Blog</h1>
+  <input type="text" id="searchBox" placeholder="Search blog posts..." onkeyup="searchPosts()">
+
+  <div class="post">
+    <h2>Welcome to My Blog</h2>
+    <p>This is the first post on my new blog. Stay tuned for more content!</p>
+  </div>
+
+  <div class="post">
+    <h2>Web Development Tips</h2>
+    <p>Here are some tips to improve your HTML, CSS, and JavaScript skills.</p>
+  </div>
+
+  <div class="post">
+    <h2>Traveling to the Mountains</h2>
+    <p>I recently visited the mountains and the experience was breathtaking. Read more here.</p>
+  </div>
+
+  <script>
+    function searchPosts() {
+      const input = document.getElementById("searchBox").value.toLowerCase();
+      const posts = document.getElementsByClassName("post");
+
+      for (let i = 0; i < posts.length; i++) {
+        const title = posts[i].getElementsByTagName("h2")[0].innerText.toLowerCase();
+        const content = posts[i].getElementsByTagName("p")[0].innerText.toLowerCase();
+
+        if (title.includes(input) || content.includes(input)) {
+          posts[i].style.display = "block";
+        } else {
+          posts[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
