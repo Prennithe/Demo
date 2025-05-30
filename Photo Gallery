@@ -160,3 +160,22 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery</title>
+</head>
+<body>
+  <h2>My Gallery</h2>
+
+  <img src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Image+1" width="100" onclick="showImage('Image 1')">
+  <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Image+2" width="100" onclick="showImage('Image 2')">
+
+  <script>
+    function showImage(name) {
+      alert("You clicked on " + name);
+    }
+  </script>
+</body>
+</html>
+-->
