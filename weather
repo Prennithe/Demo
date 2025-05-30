@@ -72,3 +72,23 @@
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather</title>
+</head>
+<body>
+  <h2>Weather Today</h2>
+  <button onclick="showWeather()">Show Weather</button>
+  <p id="weather"></p>
+
+  <script>
+    function showWeather() {
+      const condition = "Sunny";
+      const temperature = 25;
+      document.getElementById("weather").innerText = ${condition}, ${temperature}°C;
+    }
+  </script>
+</body>
+</html>
+-->
